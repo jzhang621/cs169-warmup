@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
 
   def self.add(u, pass)
     # check if the username is valid (non-empty, at most 128 characters)
-    if u.to_s == "" or u.length > 128:
+    if u.to_s == "" or u.length > 128
       return $ERR_BAD_USERNAME
+
 
     # check if the username already exists in the database
     elsif User.exists?(:username => u)
