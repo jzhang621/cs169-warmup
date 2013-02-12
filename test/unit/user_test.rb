@@ -12,12 +12,13 @@ class UserTest < ActiveSupport::TestCase
   # end
 
     test "add user" do
+        User.TESTAPI_resetFixture
         result = User.add("jimmy", "password")
-        print "RESULT" + result.to_s
         assert result == $SUCCESS, "Adding new user failed"
     end
 
     test "add user with empty password" do
+        User.TESTAPI_resetFixture
         assert User.add("jimmy", "") == $SUCCESS, "Adding new user with empty password failed"
     end
 
@@ -39,6 +40,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     test "add two users" do
+        User.TESTAPI_resetFixture
         assert User.add("jimmy", "password") == $SUCCESS
         assert User.add("jimmy1", "password") == $SUCCESS
     end
