@@ -77,7 +77,7 @@ class UsersController < ApplicationController
       # . = Success, F = Failure
       status = value[2]
 
-      totalTests = status.count "."
+      totalTests = status.length
       failedTests = status.count "F"
 
       render :json => {:totalTests => totalTests, :nrFailed => failedTests, :output => output}
