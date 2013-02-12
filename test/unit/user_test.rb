@@ -12,7 +12,9 @@ class UserTest < ActiveSupport::TestCase
   # end
 
     test "add user" do
-        assert User.add("jimmy", "password") == $SUCCESS, "Adding new user failed"
+        result = User.add("jimmy", "password")
+        print "RESULT" + result.to_s
+        assert result == $SUCCESS, "Adding new user failed"
     end
 
     test "add user with empty password" do
