@@ -75,10 +75,13 @@ class UsersController < ApplicationController
 
       # status = ..............
       # . = Success, F = Failure
-      status = value[2]
+      status = value[-3].split(",")
 
-      totalTests = status.length
-      failedTests = status.count "F"
+      totalTests = status[0]
+      failedTests = status[2]
+
+      totalTests = Integer(totalTests.scan(/\d+/).first)
+      failedTests = Integer(failedTests.scan(/\d+/).first)
 
       render :json => {:totalTests => totalTests, :nrFailed => failedTests, :output => output}
 
